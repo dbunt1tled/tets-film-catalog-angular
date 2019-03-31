@@ -1,0 +1,26 @@
+$primary-color: #3f51b5
+$secondary-color: #ffffff
+.wrapper
+  min-height: 100%
+  display: flex
+  flex-direction: column
+  margin: 0 auto
+
+main
+  flex: 1 0 auto
+  padding: 0 2em
+
+header.mainHead, main, footer.mainFooter
+  flex-shrink: 0
+footer.mainFooter
+  flex: 0 0 auto
+  padding: 1em
+  background-color: $primary-color
+  color: $secondary-color
+  display: flex
+  flex-direction: row
+
+.example-icon
+  padding: 0 5px
+.fill-remaining-space
+  flex: 1 1 auto
