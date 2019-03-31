@@ -1,5 +1,7 @@
 <div class="wrap">
-  <div class="alignCenter">
-  <app-film-card [class.filmCard]="true" *ngFor="let film of films" [film]="film"></app-film-card>
-  </div>
+    <ul  class="alignCenter">
+      <li class="filmCard" *ngFor="let film of films">
+        <app-film-card [film]="film"></app-film-card>
+      </li>
+    </ul>
 </div>

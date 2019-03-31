@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './components/main/main.component';
 import { FilmsComponent } from './components/films/films.component';
 import { DetailsComponent } from './components/details/details.component';
-import {MatCardModule, MatTabsModule} from '@angular/material';
+import {MatCardModule, MatGridListModule, MatListModule, MatTabsModule} from '@angular/material';
 import { FilmCardComponent } from './components/film-card/film-card.component';
 
 @NgModule({
@@ -12,6 +12,8 @@ import { FilmCardComponent } from './components/film-card/film-card.component';
     CommonModule,
     MatTabsModule,
     MatCardModule,
+    MatListModule,
+    MatGridListModule,
   ]
 })
 export class FilmCatalogModule { }
