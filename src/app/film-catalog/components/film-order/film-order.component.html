@@ -1,0 +1,19 @@
+<mat-card class="cardMenu">
+  <mat-toolbar class="orderMenu">
+    <mat-toolbar-row>
+      <span>В избранном</span>
+      <span class="fill-remaining-space"></span>
+      <div>
+        <mat-form-field>
+          <mat-select placeholder="Сортировка">
+            <mat-option [value]="ASC">По алфавиту: A-Z</mat-option>
+            <mat-option [value]="DESC">По алфавиту: A-Z</mat-option>
+          </mat-select>
+          <!--a mat-button *ngFor="let link of links" [routerLink]="link.path" [routerLinkActive]="link.active" >
+            <mat-icon class="example-icon">{{link.icon}}</mat-icon>{{link.label}}
+          </a-->
+        </mat-form-field>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</mat-card>
