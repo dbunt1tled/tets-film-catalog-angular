@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FilmService} from '../../services/film.service';
 import {Film} from '../../models/Film';
 
@@ -9,12 +9,25 @@ import {Film} from '../../models/Film';
 })
 export class FilmsComponent implements OnInit {
   public films: Film[];
-  constructor(
-    private filmService: FilmService
-  ) { }
+  public favorites: number[];
 
-  ngOnInit() {
-    this.filmService.getFilms().subscribe(data => this.films = data);
+  constructor(
+    private _filmService: FilmService
+  ) {
   }
 
+  ngOnInit() {
+    this._filmService.loadFilms();
+    this._filmService.getFilms().subscribe((data: Film[]) => {
+      return this.films = data;
+    });
+    this._filmService.getFavorites().subscribe((data: number[]) => {
+      console.log(data);
+      return this.favorites = data;
+    });
+  }
+
+  isFavorite(id: number) {
+    return this.favorites.indexOf(id) !== -1;
+  }
 }

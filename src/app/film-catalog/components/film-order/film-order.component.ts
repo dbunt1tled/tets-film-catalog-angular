@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FilmService} from '../../services/film.service';
 
 @Component({
   selector: 'app-film-order',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./film-order.component.sass']
 })
 export class FilmOrderComponent implements OnInit {
-
-  constructor() { }
+  public favoriteCount = 0;
+  constructor(
+    private _filmService: FilmService
+  ) { }
 
   ngOnInit() {
+    this._filmService.getFavorites().subscribe((data: number[]) => {
+      return this.favoriteCount = data.length;
+    });
   }
 
 }

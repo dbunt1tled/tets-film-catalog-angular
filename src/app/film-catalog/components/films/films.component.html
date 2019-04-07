@@ -2,9 +2,9 @@
     <div class="alignCenter">
       <app-film-order class="filmOrder"></app-film-order>
     </div>
-    <ul  class="alignCenter">
+    <ul *ngIf="films" class="alignCenter">
       <li class="filmCard" *ngFor="let film of films">
-        <app-film-card [film]="film"></app-film-card>
+        <app-film-card [film]="film" [isFavorite]="isFavorite(film.id)"></app-film-card>
       </li>
     </ul>
 </div>

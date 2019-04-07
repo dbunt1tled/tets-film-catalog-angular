@@ -4,9 +4,10 @@ import { MainComponent } from './components/main/main.component';
 import { FilmsComponent } from './components/films/films.component';
 import { DetailsComponent } from './components/details/details.component';
 import {
+  MatButtonModule,
   MatCardModule,
   MatFormFieldModule,
-  MatGridListModule,
+  MatGridListModule, MatIconModule,
   MatListModule,
   MatSelectModule,
   MatTabsModule,
@@ -14,6 +15,7 @@ import {
 } from '@angular/material';
 import { FilmCardComponent } from './components/film-card/film-card.component';
 import { FilmOrderComponent } from './components/film-order/film-order.component';
+import {DateFormatPipe} from '../utils/pipes/date-format.pipe';
 
 @NgModule({
   declarations: [MainComponent, FilmsComponent, DetailsComponent, FilmCardComponent, FilmOrderComponent],
@@ -26,6 +28,8 @@ import { FilmOrderComponent } from './components/film-order/film-order.component
     MatToolbarModule,
     MatSelectModule,
     MatFormFieldModule,
-  ]
+    MatButtonModule,
+    MatIconModule
+  ],
 })
 export class FilmCatalogModule { }

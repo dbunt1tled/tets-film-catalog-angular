@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Film} from '../../models/Film';
+import {FilmService} from '../../services/film.service';
 
 @Component({
   selector: 'app-film-card',
@@ -8,9 +9,19 @@ import {Film} from '../../models/Film';
 })
 export class FilmCardComponent implements OnInit {
   @Input() film: Film;
-  constructor() { }
+  @Input() isFavorite: boolean;
+  constructor(
+    private _filmService: FilmService
+  ) { }
 
   ngOnInit() {
   }
-
+  checkFavorite(event) {
+    event.preventDefault();
+    this._filmService.checkFavorite(this.film);
+  }
+  uncheckFavorite(event) {
+    event.preventDefault();
+    this._filmService.uncheckFavorite(this.film);
+  }
 }
