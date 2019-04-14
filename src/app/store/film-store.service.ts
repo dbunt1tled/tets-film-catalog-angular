@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import * as fromRoot from './reducers';
 import {Film} from '../film-catalog/models/Film';
 import {FilmApiService} from '../api/film/film-api.service';
-import {AddFavorite, DelFavorite, LoadFilms} from './actions/films';
+import {AddFavorite, DelFavorite, LoadFilms, SetOrder} from './actions/films';
 import {FilmSearch} from '../film-catalog/models/FilmSearch';
 
 @Injectable({
@@ -16,11 +16,11 @@ export class FilmStoreService {
     private _store: Store<fromRoot.State>
   ) { }
 
-  preloadFilms(term: string = '', include_adult: boolean = false, year: string = '') {
-    return this._filmApi.searchMovies(term, include_adult, year);
+  preloadFilms(term: string = '', sortBy: string = '', include_adult: boolean = false, year: string = '') {
+    return this._filmApi.searchMovies(term, sortBy, include_adult, year);
   }
-  loadFilms(term: string = '', include_adult: boolean = false, year: string = '') {
-    this.preloadFilms(term, include_adult, year).subscribe( (films: FilmSearch) => {
+  loadFilms(term: string = '', sortBy: string = '', include_adult: boolean = false, year: string = '') {
+    this.preloadFilms(term, sortBy, include_adult, year).subscribe( (films: FilmSearch) => {
       const resultFilms: Array<Film> = [];
       if (films.results) {
         let tmp: Film = null;
@@ -48,5 +48,8 @@ export class FilmStoreService {
   }
   getOrder() {
     return this._store.select(fromRoot.getOrder);
+  }
+  setOrder(order: string) {
+    return this._store.dispatch(new SetOrder(order));
   }
 }

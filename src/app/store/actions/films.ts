@@ -27,7 +27,7 @@ export class DelFavorite implements Action {
 }
 export class SetOrder implements Action {
   readonly type = FILM_ACTION.SET_ORDER;
-  constructor(public payload: Order) {}
+  constructor(public payload: string) {}
 }
 
 export type FilmsAction = SetOrder | AddFavorite | DelFavorite | LoadFilms | GetFilms;

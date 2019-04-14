@@ -16,6 +16,8 @@ import {environment} from '../environments/environment';
 import {reducers} from './store/reducers';
 import {FilmInterceptorService} from './api/film/film-interceptor.service';
 import {FilmApiService} from './api/film/film-api.service';
+import {EffectsModule} from '@ngrx/effects';
+import {FilmEffects} from './store/effects/film.effects';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import {FilmApiService} from './api/film/film-api.service';
     StoreRouterConnectingModule,
     (environment.production ? [] : StoreDevtoolsModule.instrument()),
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([FilmEffects]),
   ],
   providers: [
     FilmApiService,

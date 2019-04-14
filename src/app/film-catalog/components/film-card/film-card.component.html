@@ -14,12 +14,14 @@
   <div class="cardFooter">
     <mat-card-actions  class="cardAction">
       <button mat-raised-button color="primary">LIKE</button>
-      <button mat-icon-button color="warn" (click)="uncheckFavorite($event)" *ngIf="isFavorite">
+      <button mat-icon-button color="warn" (click)="uncheckFavorite($event)" *ngIf="isFavorite else noFavorite">
         <mat-icon aria-label="add to favorite">favorite</mat-icon>
       </button>
-      <button mat-icon-button color="primary" (click)="checkFavorite($event)" *ngIf="!isFavorite">
-        <mat-icon aria-label="add to favorite">favorite</mat-icon>
-      </button>
+      <ng-template #noFavorite>
+        <button mat-icon-button color="primary" (click)="checkFavorite($event)">
+          <mat-icon aria-label="add to favorite">favorite</mat-icon>
+        </button>
+      </ng-template>
     </mat-card-actions>
   </div>
 </mat-card>

@@ -19,15 +19,19 @@ export class FilmsComponent implements OnInit {
   ngOnInit() {
     this._filmService.loadFilms();
     this._filmService.getFilms().subscribe((data: Film[]) => {
+      console.log(data);
       return this.films = data;
     });
     this._filmService.getFavorites().subscribe((data: number[]) => {
-      console.log(data);
+
       return this.favorites = data;
     });
   }
 
   isFavorite(id: number) {
     return this.favorites.indexOf(id) !== -1;
+  }
+  trackByFilm(index, item: Film) {
+    return item.id;
   }
 }

@@ -1,5 +1,6 @@
 import {initialState} from '../state/film-state';
 import {FILM_ACTION, FilmsAction} from '../actions/films';
+import {Film} from '../../film-catalog/models/Film';
 
 export function filmsReducer(state = initialState, action: FilmsAction) {
   switch (action.type) {
@@ -13,7 +14,15 @@ export function filmsReducer(state = initialState, action: FilmsAction) {
     case FILM_ACTION.SET_ORDER:
       return {
         ...state,
-        order: action.payload
+        order: action.payload,
+        films: state.films.sort(function (f: Film, s: Film) {
+          switch (action.payload.indexOf('.asc')) {
+            case -1:
+              return f.vote_average > s.vote_average ? 1 : -1;
+            default:
+              return f.vote_average < s.vote_average ? 1 : -1;
+          }
+        })
       };
     case FILM_ACTION.ADD_FAVORITE:
       return {

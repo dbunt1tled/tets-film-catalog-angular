@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   filmApiBaseUrl: 'https://api.themoviedb.org/3',
   filmApiImgUrl: 'https://image.tmdb.org/t/p/w500',
-  filmApiKey: '',
+  filmApiImgOriginalUrl: 'https://image.tmdb.org/t/p/original',
+  filmApiKey: 'd6a5ac2d3d7cab11a084ca8080421b20',
   filmApiLanguage: 'ru-RU'
 };
 
